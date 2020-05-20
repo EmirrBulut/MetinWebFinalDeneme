@@ -8,6 +8,7 @@ namespace MetinWebFinal
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Deniyorum github");
+            Console.WriteLine("Simdi ne olacak?");
         }
     }
 }
