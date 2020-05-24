@@ -1,0 +1,6 @@
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/bin/Debug/MetinWebFinal.exe
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/bin/Debug/MetinWebFinal.pdb
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/obj/Debug/MetinWebFinal.csprojAssemblyReference.cache
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/obj/Debug/MetinWebFinal.csproj.CoreCompileInputs.cache
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/obj/Debug/MetinWebFinal.exe
+/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/MetinWebFinal/obj/Debug/MetinWebFinal.pdb
