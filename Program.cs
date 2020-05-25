@@ -10,17 +10,24 @@ namespace MetinWebFinal
         
         public static List<string> ReadDatas()// Okunan verileri split etmeden once bunun icinde toplayacagız.
         {
-            List<string> puredatas = new List<string>();
-            string file_path = @"/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/RestoranListesi.txt";
-            FileStream fs = new FileStream(file_path, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-            string datas = sr.ReadLine();
-            while (datas != null)
+            try
             {
-                datas = sr.ReadLine();
-                puredatas.Add(datas);
+                List<string> puredatas = new List<string>();
+                string file_path = @"/Users/emirbulut/Desktop/Metin-WebFinal/MetinWebFinal/RestoranListesi.txt";
+                FileStream fs = new FileStream(file_path, FileMode.Open, FileAccess.Read);
+                StreamReader sr = new StreamReader(fs);
+                string datas = sr.ReadLine();
+                while (datas != null)
+                {
+                    datas = sr.ReadLine();
+                    puredatas.Add(datas);
+                }
+                return puredatas;
             }
-            return puredatas;
+            catch (Exception)
+            {
+                throw new Exception("Train Set Okunamiyor. Lutfen Tekrar Deneyin");
+            }
 
 
         }
@@ -100,16 +107,48 @@ namespace MetinWebFinal
             return restorans;
         }
 
+        public static List<int> ConsoleOperations()
+        {
+            List<int> customerinput = new List<int>();
+            int input = 0;
+            string[] kriterler = { "Ortam", "Ortam Temizligi", "Yemek Kalitesi", "Hizmet Kalitesi", "Fiyat Uygunlugu", "Uasım Kolayligi", "Araba Park Olanagi" };
+            Console.WriteLine("----------Restoran Oneri Sistemine Hosgeldiniz----------");
+            Console.WriteLine("Simdi Sirasyla Size Uygun Kriter Puanlarini Gireceksiniz");
+
+           
+            try
+            {
+                for (int i = 0; i < kriterler.Length; i++)
+                {
+                    Console.WriteLine("{0}) {1} kriterinin sizin icin onemini 0 - 10 arasinda puanlayin",i+1,kriterler[i]);
+                    input = Convert.ToInt16(Console.ReadLine());
+                    if (input >=0 && input <=10)
+                    {
+                        customerinput.Add(input);
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                    
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Hatali giris yaptiniz !! Lutfen 0-10 arasi sayisal bir deger girerek tekrar bastan baslayin.");
+                throw new Exception("Hatali giris yaptiniz !!");
+            }
+
+            return customerinput;
+        }
+
 
         public static void Main(string[] args)
         {
             List<string> puredatas = ReadDatas(); // verileri okuttuk
             List<RestoranAttiribute> restorans2 = SplitData(puredatas); // her bir elemanı,bir restoranı ve onun ozellıklerının puanlarını tutan liste. Suan restorans2nin icinde 130 restoran nesnesi var.
-            for (int i = 0; i < restorans2.Count; i++)
-            {
-                Console.WriteLine("Restoran Kodu : {0} - Ortam Temizligi : {1}",restorans2[i].Restoran_kodu,restorans2[i].Ortam_temizligi);
-            }
-            Console.WriteLine(restorans2.Count);
+            List<int> inputpoints =  ConsoleOperations();
+            
         }
     }
 }
